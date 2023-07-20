@@ -10,16 +10,16 @@ import cz.kamenitxan.jakon.core.database.DBHelper
 import cz.kamenitxan.jakon.core.template.TemplateEngine
 import cz.kamenitxan.jakon.core.template.utils.TemplateUtils
 import cz.kamenitxan.jakon.logging.Logger
-import cz.kamenitxan.templateapp.entity.Word
+import cz.kamenitxan.templateapp.entity.Button
 
 import scala.collection.JavaConverters._
 
 /**
  * Created by TPa on 2019-08-24.
  */
-class WordsControler extends IController {
+class ButtonsController extends IController {
 
-	private implicit val cls: Class[Word] = classOf[Word]
+	private implicit val cls: Class[Button] = classOf[Button]
 
 	private val template = "raw"
 	private val gson = if (Settings.getDeployMode == DeployMode.DEVEL) {
@@ -28,7 +28,7 @@ class WordsControler extends IController {
 		new Gson()
 	}
 
-	private val ALL_WORDS_SQL = "SELECT * FROM Word"
+	 val ALL_WORDS_SQL = "SELECT * FROM Button"
 
 	def generate(): Unit = {
 		val e: TemplateEngine = TemplateUtils.getEngine
@@ -43,4 +43,8 @@ class WordsControler extends IController {
 		})
 
 	}
+}
+
+object ButtonsController {
+	val ALL_WORDS_SQL = "SELECT * FROM Button"
 }
